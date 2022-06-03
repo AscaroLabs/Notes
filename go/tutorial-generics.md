@@ -59,9 +59,15 @@ Each type parameter has a _type constraint_ that acts as a kind of meta-type for
 ```go
 // SumIntsOrFloats sums the values of map m. It supports both int64 and float64
 // as types for map values.
-// Declare a SumIntsOrFloats function with two type parameters (inside the square brackets), K and V, and one argument that uses the type parameters, m of type map[K]V. The function returns a value of type V.
-// Specify for the K type parameter the type constraint comparable. Intended specifically for cases like these, the comparable constraint is predeclared in Go. It allows any type whose values may be used as an operand of the comparison operators == and !=. Go requires that map keys be comparable. 
-// Specify for the V type parameter a constraint that is a union of two types: int64 and float64. 
+// Declare a SumIntsOrFloats function with two type parameters (inside the 
+// square brackets), K and V, and one argument that uses the type parameters, 
+// m of type map[K]V. The function returns a value of type V.
+// Specify for the K type parameter the type constraint comparable. Intended 
+// specifically for cases like these, the comparable constraint is predeclared in Go. 
+// It allows any type whose values may be used as an operand of the comparison 
+// operators == and !=. Go requires that map keys be comparable. 
+// Specify for the V type parameter a constraint that is a union of 
+// two types: int64 and float64. 
 func SumIntsOrFloats[K comparable, V int64 | float64](m map[K]V) V {
     var s V
     for _, v := range m {
